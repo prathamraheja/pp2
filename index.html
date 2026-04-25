@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person 💖</title>
+    <style>
+        @import url('[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap)');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 50%, #dda0dd 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: #ff69b4;
+            text-shadow: 3px 3px 0 #fff, 5px 5px 10px rgba(255,105,180,0.3);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #8b4789;
+        }
+
+        /* Character Section */
+        .characters {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .character {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        .character:nth-child(1) { animation-delay: 0s; }
+        .character:nth-child(2) { animation-delay: 0.3s; }
+        .character:nth-child(3) { animation-delay: 0.6s; }
+
+        .character:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .hello-kitty {
+            background: linear-gradient(145deg, #fff 0%, #ffecf0 100%);
+            box-shadow: 0 8px 25px rgba(255,182,193,0.5);
+        }
+
+        .kuromi {
+            background: linear-gradient(145deg, #2d1b4e 0%, #4a2c7a 100%);
+            box-shadow: 0 8px 25px rgba(75,0,130,0.4);
+        }
+
+        .cat {
+            background: linear-gradient(145deg, #ffecd2 0%, #fcb69f 100%);
+            box-shadow: 0 8px 25px rgba(252,182,159,0.5);
+        }
+
+        /* Love Notes Section */
+        .notes-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            color: #ff69b4;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .love-notes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .note {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(255,105,180,0.2);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .note:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .note:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255,105,180,0.3);
+        }
+
+        .note::before {
+            content: '💕';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 30px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .note h3 {
+            color: #ff69b4;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .note p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Cute Buttons */
+        .buttons-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cute-btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cute-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .cute-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-love {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8a80 100%);
+            color: white;
+            box-shadow: 0 5px 20px rgba(255,107,157,0.4);
+        }
+
+        .btn-love:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,107,157,0.5);
+        }
+
+        .btn-hug {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            color: white;
+            box-shadow: 0 5px 20px rgba(168,85,247,0.4);
+        }
+
+        .btn-hug:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(168,85,247,0.5);
+        }
+
+        .btn-fireworks {
+            background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+            color: white;
+            box-shadow: 0 5px 20px rgba(251,191,36,0.4);
+        }
+
+        .btn-fireworks:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(251,191,36,0.5);
+        }
+
+        /* Pop-up Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 400px;
+            text-align: center;
+            animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .modal-emoji {
+            font-size: 80px;
+            animation: bounce 0.6s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .modal h2 {
+            font-family: 'Pacifico', cursive;
+            color: #ff69b4;
+            margin: 20px 0 10px;
+        }
+
+        .modal p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #ff69b4;
+        }
+
+        /* Fireworks Canvas */
+        #fireworks-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* Reassurance Cards */
+        .reassurance-section {
+            margin-bottom: 40px;
+        }
+
+        .reassurance-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .reassurance-card {
+            background: linear-gradient(135deg, #fff 0%, #fdf2f8 100%);
+            border-radius: 15px;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 20px rgba(255,105,180,0.15);
+            animation: slideIn 0.5s ease-out backwards;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .reassurance-card:hover {
+            transform: translateX(10px);
+        }
+
+        .reassurance-card:nth-child(1) { animation-delay: 0.1s; }
+        .reassurance-card:nth-child(2) { animation-delay: 0.2s; }
+        .reassurance-card:nth-child(3) { animation-delay: 0.3s; }
+        .reassurance-card:nth-child(4) { animation-delay: 0.4s; }
+        .reassurance-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .reassurance-icon {
+            font-size: 35px;
+            min-width: 50px;
+        }
+
+        .reassurance-text {
+            color: #6b4c6e;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b4789;
+        }
+
+        .footer .big-heart {
+            font-size: 50px;
+            animation: heartbeat 1s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+        }
+
+        /* Sparkle cursor trail */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            animation: sparkleAnim 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(180deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .characters {
+                gap: 15px;
+            }
+            .character {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+            .cute-btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Fireworks Canvas -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>✨ For My Favorite Person ✨</h1>
+            <p class="subtitle">A little corner of the internet just for you 💕</p>
+        </header>
+
+        <!-- Characters -->
+        <section class="characters">
+            <div class="character hello-kitty" onclick="showCharacterMessage('kitty')" title="Click me!">
+                🎀
+            </div>
+            <div class="character kuromi" onclick="showCharacterMessage('kuromi')" title="Click me!">
+                💜
+            </div>
+            <div class="character cat" onclick="showCharacterMessage('cat')" title="Click me!">
+                🐱
+            </div>
+        </section>
+
+        <!-- Cute Buttons -->
+        <section class="buttons-section">
+            <button class="cute-btn btn-love" onclick="showModal('love')">
+                💖 Send Love
+            </button>
+            <button class="cute-btn btn-hug" onclick="showModal('hug')">
+                🤗 Virtual Hug
+            </button>
+            <button class="cute-btn btn-fireworks" onclick="launchFireworks()">
+                🎆 Fireworks!
+            </button>
+        </section>
+
+        <!-- Love Notes -->
+        <section class="notes-section">
+            <h2 class="section-title">💌 Love Notes For You</h2>
+            <div class="love-notes">
+                <div class="note" onclick="sparkleEffect(event)">
+                    <h3>Good Morning Thought ☀️</h3>
+                    <p>Every morning I wake up grateful that you exist. You make the world brighter just by being in it.</p>
+                </div>
+                <div class="note" onclick="sparkleEffect(event)">
+                    <h3>Random Reminder 🌸</h3>
+                    <p>You are doing amazing, even on the days it doesn't feel like it. I see how hard you try, and I'm so proud of you.</p>
+                </div>
+                <div class="note" onclick="sparkleEffect(event)">
+                    <h3>Late Night Whisper 🌙</h3>
+                    <p>When you're lying awake at night with too many thoughts, remember: you are loved more than you know. Always.</p>
+                </div>
+                <div class="note" onclick="sparkleEffect(event)">
+                    <h3>Just Because 💫</h3>
+                    <p>There's no special reason for this note. I just wanted to tell you that you're wonderful and I love you endlessly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reassurances -->
+        <section class="reassurance-section">
+            <h2 class="section-title">🌟 Things I Need You To Know</h2>
+            <div class="reassurance-cards">
+                <div class="reassurance-card" onclick="sparkleEffect(event)">
+                    <span class="reassurance-icon">🏆</span>
+                    <span class="reassurance-text">I am SO proud of you. Every single day.</span>
+                </div>
+                <div class="reassurance-card" onclick="sparkleEffect(event)">
+                    <span class="reassurance-icon">💪</span>
+                    <span class="reassurance-text">You are stronger than you think you are.</span>
+                </div>
+                <div class="reassurance-card" onclick="sparkleEffect(event)">
+                    <span class="reassurance-icon">🌈</span>
+                    <span class="reassurance-text">Your feelings are valid. All of them.</span>
+                </div>
+                <div class="reassurance-card" onclick="sparkleEffect(event)">
+                    <span class="reassurance-icon">🏠</span>
+                    <span class="reassurance-text">You will always have a safe place with me.</span>
+                </div>
+                <div class="reassurance-card" onclick="sparkleEffect(event)">
+                    <span class="reassurance-icon">♾️</span>
+                    <span class="reassurance-text">My love for you has no conditions or limits.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="big-heart">❤️</div>
+            <p>Made with all my love, just for you</p>
+            <p>Forever & Always 💕</p>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-emoji" id="modal-emoji">💖</div>
+            <h2 id="modal-title">Title</h2>
+            <p id="modal-text">Text</p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floating-hearts');
+            const hearts = ['💕', '💖', '💗', '💓', '💝', '🩷', '♥️', '🌸', '✨', '⭐'];
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Modal functions
+        const modalMessages = {
+            love: {
+                emoji: '💖',
+                title: 'Sending All My Love!',
+                text: 'Consider yourself absolutely SHOWERED in love right now! You are precious, wonderful, and so very loved! 💕✨'
+            },
+            hug: {
+                emoji: '🤗',
+                title: 'Biggest Virtual Hug!',
+                text: 'Imagine the warmest, longest, most comforting hug wrapping around you right now. I\'m always here for you! 🫂💕'
+            },
+            kitty: {
+                emoji: '🎀',
+                title: 'Hello Kitty Says Hi!',
+                text: 'Friendship is the most beautiful thing! Just like our bond! You make everything more adorable! 🎀✨'
+            },
+            kuromi: {
+                emoji: '💜',
+                title: 'Kuromi\'s Message!',
+                text: 'Even the mischievous ones know true love! You\'re perfectly imperfect and I love every bit of you! 💜🖤'
+            },
+            cat: {
+                emoji: '🐱',
+                title: 'Kitty Love!',
+                text: 'Meow! You deserve all the head bumps and purrs in the world! You\'re purrfectly amazing! 🐱💕'
+            }
+        };
+
+        function showModal(type) {
+            const msg = modalMessages[type];
+            document.getElementById('modal-emoji').textContent = msg.emoji;
+            document.getElementById('modal-title').textContent = msg.title;
+            document.getElementById('modal-text').textContent = msg.text;
+            document.getElementById('modal-overlay').classList.add('active');
+        }
+
+        function showCharacterMessage(type) {
+            showModal(type);
+        }
+
+        function closeModal(event) {
+            if (!event || event.target === document.getElementById('modal-overlay')) {
+                document.getElementById('modal-overlay').classList.remove('active');
+            }
+        }
+
+        // Fireworks
+        const canvas = document.getElementById('fireworks-canvas');
+        const ctx = canvas.getContext('2d');
+        let fireworks = [];
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.velocity = {
+                    x: (Math.random() - 0.5) * 8,
+                    y: (Math.random() - 0.5) * 8
+                };
+                this.alpha = 1;
+                this.decay = Math.random() * 0.015 + 0.01;
+                this.size = Math.random() * 3 + 2;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.velocity.y += 0.1;
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= this.decay;
+            }
+        }
+
+        function createFirework(x, y) {
+            const colors = ['#ff69b4', '#ff6b9d', '#a855f7', '#ec4899', '#fbbf24', '#f97316', '#ff85a2', '#ffb6c1'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle(x, y, color));
+            }
+        }
+
+        function animateFireworks() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles = particles.filter(p => p.alpha > 0);
+            particles.forEach(p => {
+                p.draw();
+                p.update();
+            });
+
+            if (particles.length > 0) {
+                requestAnimationFrame(animateFireworks);
+            }
+        }
+
+        function launchFireworks() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        Math.random() * canvas.width,
+                        Math.random() * canvas.height * 0.5
+                    );
+                }, i * 300);
+            }
+            animateFireworks();
+        }
+
+        // Sparkle effect on click
+        function sparkleEffect(event) {
+            const sparkles = ['✨', '💖', '⭐', '💕', '🌟'];
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                    sparkle.style.left = (event.clientX + (Math.random() - 0.5) * 50) + 'px';
+                    sparkle.style.top = (event.clientY + (Math.random() - 0.5) * 50) + 'px';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i * 50);
+            }
+        }
+
+        // Cursor sparkle trail
+        let lastSparkle = 0;
+        document.addEventListener('mousemove', (e) => {
+            if (Date.now() - lastSparkle > 100) {
+                if (Math.random() > 0.7) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.textContent = ['✨', '💕', '⭐'][Math.floor(Math.random() * 3)];
+                    sparkle.style.left = e.clientX + 'px';
+                    sparkle.style.top = e.clientY + 'px';
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 1000);
+                }
+                lastSparkle = Date.now();
+            }
+        });
+
+        // Initialize
+        createFloatingHearts();
+    </script>
+</body>
+</html>
